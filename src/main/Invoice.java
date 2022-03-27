@@ -1,19 +1,25 @@
 package main;
 
+import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class Invoice {
     private String invoiceId;
-    private Double grandTotal;
-    private List<Product> products;
-    private Map<String, Integer> productQuantities;
+    private LocalDateTime invoiceDate;
+    private LocalDateTime invoiceUpdateDate;
+    private String orderId;
+    private Boolean invoiceStatus;
+    private double amountDue;
 
-    public Invoice(String invoiceId, Double grandTotal, List<Product> products, Map<String, Integer> productQuantities) {
+    public Invoice(String invoiceId, LocalDateTime invoiceDate, LocalDateTime invoiceUpdateDate, String orderId, Boolean invoiceStatus, double amountDue) {
         this.invoiceId = invoiceId;
-        this.grandTotal = grandTotal;
-        this.products = products;
-        this.productQuantities = productQuantities;
+        this.invoiceDate = invoiceDate;
+        this.invoiceUpdateDate = invoiceUpdateDate;
+        this.orderId = orderId;
+        this.invoiceStatus = invoiceStatus;
+        this.amountDue = amountDue;
     }
 
     public String getInvoiceId() {
@@ -24,43 +30,55 @@ public class Invoice {
         this.invoiceId = invoiceId;
     }
 
-    public Double getGrandTotal() {
-        return grandTotal;
+    public LocalDateTime getInvoiceDate() {
+        return invoiceDate;
     }
 
-    public void setGrandTotal(Double grandTotal) {
-        this.grandTotal = grandTotal;
+    public void setInvoiceDate(LocalDateTime invoiceDate) {
+        this.invoiceDate = invoiceDate;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public LocalDateTime getInvoiceUpdateDate() {
+        return invoiceUpdateDate;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setInvoiceUpdateDate(LocalDateTime invoiceUpdateDate) {
+        this.invoiceUpdateDate = invoiceUpdateDate;
     }
 
-    public Map<String, Integer> getProductQuantities() {
-        return productQuantities;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setProductQuantities(Map<String, Integer> productQuantities) {
-        this.productQuantities = productQuantities;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public Boolean getInvoiceStatus() {
+        return invoiceStatus;
+    }
+
+    public void setInvoiceStatus(Boolean invoiceStatus) {
+        this.invoiceStatus = invoiceStatus;
+    }
+
+    public double getAmountDue() {
+        return amountDue;
+    }
+
+    public void setAmountDue(double amountDue) {
+        this.amountDue = amountDue;
     }
 
     @Override
     public String toString() {
         return "Invoice{" +
                 "invoiceId='" + invoiceId + '\'' +
-                ", grandTotal=" + grandTotal +
-                ", products=" + products +
-                ", productQuantities=" + productQuantities +
+                ", invoiceDate=" + invoiceDate +
+                ", invoiceUpdateDate=" + invoiceUpdateDate +
+                ", orderId='" + orderId + '\'' +
+                ", invoiceStatus=" + invoiceStatus +
+                ", amountDue=" + amountDue +
                 '}';
-    }
-
-    public double claculateGrandTotal() {
-        for(var qnt:productQuantities){
-
-        }
     }
 }

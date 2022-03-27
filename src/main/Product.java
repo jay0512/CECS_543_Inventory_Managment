@@ -1,16 +1,21 @@
 package main;
 
 public class Product {
+
     private String productId;
     private String name;
+    private String productCode;
     private String description;
-    private Double price;
+    private Double sellingPrice;
+    private Double costPrice;
 
-    public Product(String productId, String name, String description, Double price) {
+    public Product(String productId, String name, String productCode, String description, Double sellingPrice, Double costPrice) {
         this.productId = productId;
         this.name = name;
+        this.productCode = productCode;
         this.description = description;
-        this.price = price;
+        this.sellingPrice = sellingPrice;
+        this.costPrice = costPrice;
     }
 
     public String getProductId() {
@@ -29,6 +34,14 @@ public class Product {
         this.name = name;
     }
 
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -37,12 +50,20 @@ public class Product {
         this.description = description;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getSellingPrice() {
+        return sellingPrice;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setSellingPrice(Double sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
+
+    public Double getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(Double costPrice) {
+        this.costPrice = costPrice;
     }
 
     @Override
@@ -50,8 +71,10 @@ public class Product {
         return "Product{" +
                 "productId='" + productId + '\'' +
                 ", name='" + name + '\'' +
+                ", productCode='" + productCode + '\'' +
                 ", description='" + description + '\'' +
-                ", price=" + price +
+                ", sellingPrice=" + sellingPrice +
+                ", costPrice=" + costPrice +
                 '}';
     }
 }
