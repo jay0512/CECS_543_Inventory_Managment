@@ -23,29 +23,27 @@ public class CustomerOrder extends Order {
     }
 
     public CustomerOrder createOrder(Order order) {
-        CustomerOrder customerOrder = new CustomerOrder(order.getOrderId(), order.getCustomerId() ,order.getOrderItems(),order.getTotalOrderAmount(),0.0, order.getOrderDate());
-        return customerOrder;
+        return new CustomerOrder(order.getOrderId(), order.getCustomerId(), order.getOrderItems(), order.getTotalOrderAmount(), 0.0, order.getOrderDate());
     }
 
     public CustomerOrder updateOrder(Order order) {
-        CustomerOrder customerOrder = new CustomerOrder(order.getOrderId(), order.getCustomerId() ,order.getOrderItems(),order.getTotalOrderAmount(),0.0, order.getOrderDate());
-        return customerOrder;
+        return new CustomerOrder(order.getOrderId(), order.getCustomerId(), order.getOrderItems(), order.getTotalOrderAmount(), 0.0, order.getOrderDate());
     }
 
     @Override
     public OrderItem getOrderItemDetails(String orderItemId) {
-        for(OrderItem item : orderItems){
-            if(item.getOrderItemId().equals(orderItemId)){
+        for (OrderItem item : orderItems) {
+            if (item.getOrderItemId().equals(orderItemId)) {
                 return item;
             }
         }
         return null;
     }
 
-    public double claculateGrandTotal() {
+    public double calculateGrandTotal() {
         double totalOrderAmount = 0;
 
-        for(var  orderItem :orderItems){
+        for (var orderItem : orderItems) {
             totalOrderAmount = totalOrderAmount + orderItem.getProduct().getSellingPrice() * orderItem.getQuantity();
         }
 
