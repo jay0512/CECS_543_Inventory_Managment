@@ -3,8 +3,10 @@ package main;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ShopOwner extends User {
 
@@ -19,26 +21,50 @@ public class ShopOwner extends User {
         this.password = password;
     }
 
-    public List<StockItem> lookupInventory() {
+    public StockItem lookupInventoryItem(String productId) {
+        Map<String, StockItem> stockItems = getAllInventoryItems();
 
+        return stockItems.get(productId);
+
+    }
+
+    public Map<String, StockItem> lookupInventory() {
         return getAllInventoryItems();
     }
 
-    public List<StockItem> getAllInventoryItems() {
-        List<StockItem> inventoryItems = new ArrayList<>();
+    public Map<String, StockItem> searchInventoryItem(String searchString) {
+        Map<String, StockItem> stockItems = getAllInventoryItems();
+        Map<String, StockItem> result = new HashMap<>();
+        for (var entry : stockItems.entrySet()) {
+            if (entry.getValue().getProductName().contains(searchString) ||
+                    entry.getValue().getProductCode().contains(searchString)) {
+                result.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        return result;
+    }
+
+    public Map<String, StockItem> getAllInventoryItems() {
+        Map<String, StockItem> inventoryItemMap = new HashMap<>();
         String line;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/Users/jay/IdeaProjects/CECS_543_Inventory_Managment/src/assets/InventoryStock.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(getSeatRequestsFilePath("InventoryStock.csv")));
+            boolean isHeader = true;
             while ((line = br.readLine()) != null) {
+                if (isHeader) {
+                    isHeader = false;
+                    continue;
+                }
                 String[] employee = line.split(",");
                 StockItem stockItem = new StockItem(employee[0], employee[1], employee[2], Integer.parseInt(employee[3]), Integer.parseInt(employee[4]));
-                inventoryItems.add(stockItem);
+                inventoryItemMap.put(employee[0], stockItem);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return inventoryItems;
+        return inventoryItemMap;
     }
 
 
@@ -84,12 +110,12 @@ public class ShopOwner extends User {
 
     @Override
     public String toString() {
-        return "ShopOwner{" +
-                "userId='" + userId + '\'' +
-                ", name='" + name + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
-                ", addresses=" + addresses +
-                ", password='" + password + '\'' +
-                '}';
+        return "ShopOwner{" + "userId='" + userId + '\'' + ", name='" + name + '\'' + ", contactNumber='" + contactNumber + '\'' + ", addresses=" + addresses + ", password='" + password + '\'' + '}';
+    }
+
+    public static String getSeatRequestsFilePath(String fileName) {
+        var currentPath = Paths.get(System.getProperty("user.dir"));
+        var filePath = Paths.get(currentPath.toString(), "src", "assets", fileName);
+        return filePath.toString();
     }
 }
