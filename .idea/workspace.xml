@@ -4,9 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="032028cd-2b07-469a-811b-e838dccf0a9a" name="Changes" comment="Update project to maven">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="032028cd-2b07-469a-811b-e838dccf0a9a" name="Changes" comment="Added gitignore and README.md">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Address.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CustomerOrder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FileUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InventoryStock.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Invoice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Invoice.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Order.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/OrderItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Product.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShopOwner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/StockItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WareHouse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/FoundNotException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/InvalidInputException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/AddressTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/CustomerOrderTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/InvoiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ProductTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ShopOwnerTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +38,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,6 +61,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -66,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649575305168</updated>
-      <workItem from="1649575308595" duration="567000" />
+      <workItem from="1649575308595" duration="1333000" />
     </task>
     <task id="LOCAL-00001" summary="Update project to maven">
       <created>1649575729199</created>
@@ -75,7 +110,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649575729199</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added gitignore and readme.">
+      <created>1649575908717</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649575908717</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added gitignore and README.md">
+      <created>1649576100139</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649576100139</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +143,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update project to maven" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update project to maven" />
+    <MESSAGE value="Added gitignore and README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added gitignore and README.md" />
   </component>
 </project>

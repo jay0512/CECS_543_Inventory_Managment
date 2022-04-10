@@ -1,2 +1,0 @@
-﻿orderId,customerId,orderItems,totalOrderAmount,discountAmount,orderDate
-1,1,[{1,3,2},{2,2,5}],1100.0,100.0,2022-04-06T11:31:31.662315
