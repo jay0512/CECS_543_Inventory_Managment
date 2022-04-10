@@ -4,32 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="032028cd-2b07-469a-811b-e838dccf0a9a" name="Changes" comment="Added gitignore and README.md">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="032028cd-2b07-469a-811b-e838dccf0a9a" name="Changes" comment="cleanup project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Address.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CustomerOrder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FileUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InventoryStock.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Invoice.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Invoice.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Order.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/OrderItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Product.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ShopOwner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/StockItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WareHouse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/exception/FoundNotException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/exception/InvalidInputException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/AddressTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/CustomerOrderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/InvoiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ProductTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ShopOwnerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +42,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -101,7 +79,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649575305168</updated>
-      <workItem from="1649575308595" duration="1333000" />
+      <workItem from="1649575308595" duration="3563000" />
+      <workItem from="1649620679792" duration="268000" />
+      <workItem from="1649620963303" duration="51000" />
+      <workItem from="1649621029406" duration="1128000" />
     </task>
     <task id="LOCAL-00001" summary="Update project to maven">
       <created>1649575729199</created>
@@ -124,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649576100139</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="cleanup project">
+      <created>1649576668178</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649576668178</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +132,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update project to maven" />
     <MESSAGE value="Added gitignore and README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added gitignore and README.md" />
+    <MESSAGE value="cleanup project" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup project" />
   </component>
 </project>
