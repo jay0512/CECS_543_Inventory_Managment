@@ -20,8 +20,11 @@ class ShopOwnerTest {
                 addresses, "Admin123");
     }
 
+    /*
+    Inventory Look Up Test Cases
+    */
     @Test
-    void lookupInventory() {
+    void testLookupInventory() {
 
         // Given
         Map<String, StockItem> inventoryItemMap = this.owner.getAllInventoryItems();
@@ -35,7 +38,7 @@ class ShopOwnerTest {
     }
 
     @Test
-    void lookupInventoryItem() {
+    void testLookupInventoryItem() throws InvalidInputException, FoundNotException {
         // Given
         // this.owner
 
@@ -54,7 +57,40 @@ class ShopOwnerTest {
     }
 
     @Test
-    void searchInventoryItem() throws InvalidInputException, FoundNotException {
+    void testLookupInventoryItemWithEmptyString() {
+
+        // Given
+        Map<String, StockItem> inventoryItemMap = this.owner.getAllInventoryItems();
+
+        // Perform
+
+        // Compare
+        Throwable invalidInputException = Assertions.assertThrows(InvalidInputException.class, () -> {
+            this.owner.lookupInventoryItem("");
+        }, "InvalidInputException was Expected");
+
+        Assertions.assertEquals("Input should not be empty", invalidInputException.getMessage());
+
+    }
+
+    @Test
+    void testLookupInventoryItemNotInInventory() {
+
+        // Given
+
+        // Perform
+
+        // Compare
+        Throwable foundNotException = Assertions.assertThrows(FoundNotException.class, () -> {
+            this.owner.lookupInventoryItem("100");
+        }, "FoundNotException was Expected");
+
+        Assertions.assertEquals("Stock Item not found", foundNotException.getMessage());
+
+    }
+
+    @Test
+    void testSearchInventoryItem() throws InvalidInputException, FoundNotException {
 
         // Given
         Map<String, StockItem> inventoryItemMap = this.owner.getAllInventoryItems();
@@ -69,10 +105,9 @@ class ShopOwnerTest {
     }
 
     @Test
-    void searchInventoryItemWithEmptyString() {
+    void testSearchInventoryItemWithEmptyString() {
 
         // Given
-        Map<String, StockItem> inventoryItemMap = this.owner.getAllInventoryItems();
 
         // Perform
 
@@ -86,10 +121,9 @@ class ShopOwnerTest {
     }
 
     @Test
-    void searchInventoryItemNotInInventory() {
+    void testSearchInventoryItemNotInInventory() {
 
         // Given
-        Map<String, StockItem> inventoryItemMap = this.owner.getAllInventoryItems();
 
         // Perform
 
@@ -101,4 +135,40 @@ class ShopOwnerTest {
         Assertions.assertEquals("Inventory item not found", foundNotException.getMessage());
 
     }
+
+    /*
+    Invoice Generate Test Cases
+    */
+    @Test
+    void testGenerateInvoice() {
+        // Given
+        // this.owner
+
+        // Perform
+        Invoice invoice = this.owner.generateInvoice("1", "1", 600.0);
+
+        // Compare
+        Assertions.assertAll("Test Invoice",
+                () -> Assertions.assertEquals("1", invoice.getInvoiceId()),
+                () -> Assertions.assertEquals(false, invoice.getInvoiceStatus()),
+                () -> Assertions.assertEquals(500.0, invoice.getAmountDue())
+        );
+    }
+
+    @Test
+    void testPayInvoiceInstallmentPayment() {
+        // Given
+        // this.owner
+
+        // Perform
+        Invoice invoice = this.owner.payInvoiceInstallmentPayment("1", 100.0);
+
+        // Compare
+        Assertions.assertAll("Test Invoice",
+                () -> Assertions.assertEquals("1", invoice.getInvoiceId()),
+                () -> Assertions.assertEquals(false, invoice.getInvoiceStatus()),
+                () -> Assertions.assertEquals(400.0, invoice.getAmountDue())
+        );
+    }
+
 }

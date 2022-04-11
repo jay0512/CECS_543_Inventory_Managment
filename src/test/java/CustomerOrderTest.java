@@ -26,7 +26,7 @@ class CustomerOrderTest {
     }
 
     @Test
-    void getOrderItemDetails() {
+    void testGetOrderItemDetails() {
         // Given
         // this.order
 
@@ -43,7 +43,7 @@ class CustomerOrderTest {
     }
 
     @Test
-    void calculateGrandTotal() {
+    void testCalculateGrandTotal() {
         // Given
         // this.order
 

@@ -18,7 +18,7 @@ public class FileUtils {
         String line;
         List<String[]> dataList = new ArrayList<>();
 
-        BufferedReader br = new BufferedReader(new FileReader(FileUtils.getFilePath("InventoryStock.csv")));
+        BufferedReader br = new BufferedReader(new FileReader(FileUtils.getFilePath(fileName)));
         boolean isHeader = true;
         while ((line = br.readLine()) != null) {
             if (isHeader) {

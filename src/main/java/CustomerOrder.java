@@ -39,7 +39,7 @@ public class CustomerOrder extends Order {
                 customerOrder.setOrderItems(getOrderItems(data[2]));
                 customerOrder.setTotalOrderAmount(Double.parseDouble(data[3]));
                 customerOrder.setDiscountAmount(Double.parseDouble(data[4]));
-                customerOrder.setOrderDate(LocalDateTime.parse(data[4]));
+                customerOrder.setOrderDate(LocalDateTime.parse(data[5]));
 
                 orders.put(data[0], customerOrder);
             }
@@ -55,8 +55,7 @@ public class CustomerOrder extends Order {
         List<OrderItem> orderItems = new ArrayList<>();
         Matcher m = Pattern.compile("(?<=\\{).+?(?=\\})").matcher(orderItemsString);
         while (m.find()) {
-            System.out.println(m.group());
-            String[] data = m.group().split(",");
+            String[] data = m.group().split("|");
             OrderItem orderItem = new OrderItem(data[0], Product.getProductById(data[1]), Integer.parseInt(data[2]));
 
             orderItems.add(orderItem);
@@ -151,16 +150,8 @@ public class CustomerOrder extends Order {
         this.totalOrderAmount = totalOrderAmount;
     }
 
-    public double getDiscountAmount() {
-        return discountAmount;
-    }
-
     public void setDiscountAmount(double discountAmount) {
         this.discountAmount = discountAmount;
-    }
-
-    public LocalDateTime getOrderDate() {
-        return orderDate;
     }
 
     public void setOrderDate(LocalDateTime orderDate) {

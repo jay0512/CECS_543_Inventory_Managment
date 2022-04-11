@@ -1,3 +1,7 @@
+import exception.FoundNotException;
+import exception.InvalidInputException;
+import exception.LimitExceedException;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -24,9 +28,18 @@ public class Invoice {
         this.totalOrderAmount = totalOrderAmount;
     }
 
-    public static Invoice getInvoiceById(String invoiceId) {
+    public static Invoice getInvoiceById(String invoiceId) throws FoundNotException, InvalidInputException {
+        if (invoiceId.isEmpty() || invoiceId.equals("")) {
+            throw new InvalidInputException("Input should not be empty");
+        }
+
         Map<String, Invoice> invoices = getAllInvoices();
-        return invoices.get(invoiceId);
+
+        Invoice result = invoices.get(invoiceId);
+        if (result == null)
+            throw new FoundNotException("Invoice not found");
+
+        return result;
     }
 
     public static Map<String, Invoice> getAllInvoices() {
@@ -34,7 +47,7 @@ public class Invoice {
         try {
             List<String[]> dataList = FileUtils.getDataFromFile("Invoice.csv");
             for (String[] data : dataList) {
-                Invoice invoice = new Invoice(data[0], LocalDateTime.parse(data[1]), LocalDateTime.parse(data[2]), data[3], Boolean.parseBoolean(data[4]), Double.parseDouble(data[4]), Double.parseDouble(data[5]));
+                Invoice invoice = new Invoice(data[0], LocalDateTime.parse(data[1]), LocalDateTime.parse(data[2]), data[3], Boolean.parseBoolean(data[4]), Double.parseDouble(data[5]), Double.parseDouble(data[6]));
                 invoices.put(data[0], invoice);
             }
         } catch (IOException e) {
@@ -42,6 +55,30 @@ public class Invoice {
         }
 
         return invoices;
+    }
+
+    public static Invoice generateInvoice(String invoiceId, Order order, double amountPaid) throws LimitExceedException {
+        if (order.getTotalOrderAmount() < amountPaid) {
+            throw new LimitExceedException("Amount paid cannot be more than amount due");
+        }
+        boolean invoiceStatus = (order.getTotalOrderAmount() > amountPaid) ? false : true;
+        Invoice invoice = new Invoice(invoiceId, LocalDateTime.now(), LocalDateTime.now(), order.getOrderId(), invoiceStatus, order.getTotalOrderAmount() - amountPaid, order.getTotalOrderAmount());
+
+        return invoice;
+    }
+
+    public static Invoice payInvoiceInstallmentPayment(Invoice invoice, double amountPaid) throws LimitExceedException {
+        if (amountPaid > invoice.getAmountDue()) {
+            throw new LimitExceedException("Amount paid cannot be more than amount due");
+        }
+        invoice.setAmountDue(invoice.getAmountDue() - amountPaid);
+
+        if (invoice.getAmountDue() == 0.0) {
+            invoice.setInvoiceStatus(true);
+        }
+        invoice.setInvoiceUpdateDate(LocalDateTime.now());
+
+        return invoice;
     }
 
     public String getInvoiceId() {
@@ -52,28 +89,12 @@ public class Invoice {
         this.invoiceId = invoiceId;
     }
 
-    public LocalDateTime getInvoiceDate() {
-        return invoiceDate;
-    }
-
-    public void setInvoiceDate(LocalDateTime invoiceDate) {
-        this.invoiceDate = invoiceDate;
-    }
-
     public LocalDateTime getInvoiceUpdateDate() {
         return invoiceUpdateDate;
     }
 
     public void setInvoiceUpdateDate(LocalDateTime invoiceUpdateDate) {
         this.invoiceUpdateDate = invoiceUpdateDate;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
     }
 
     public Boolean getInvoiceStatus() {
@@ -90,14 +111,6 @@ public class Invoice {
 
     public void setAmountDue(double amountDue) {
         this.amountDue = amountDue;
-    }
-
-    public double getTotalOrderAmount() {
-        return totalOrderAmount;
-    }
-
-    public void setTotalOrderAmount(double totalOrderAmount) {
-        this.totalOrderAmount = totalOrderAmount;
     }
 
     @Override

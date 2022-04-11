@@ -24,64 +24,32 @@ public class Address {
         return addressId;
     }
 
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
-    }
-
     public String getStreet() {
         return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
     }
 
     public String getApt() {
         return apt;
     }
 
-    public void setApt(String apt) {
-        this.apt = apt;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getState() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public String getCountry() {
         return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
     public Boolean getDefault() {
         return isDefault;
-    }
-
-    public void setDefault(Boolean aDefault) {
-        isDefault = aDefault;
     }
 
     @Override

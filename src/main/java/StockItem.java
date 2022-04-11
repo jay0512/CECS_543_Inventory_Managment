@@ -18,40 +18,20 @@ public class StockItem {
         return productId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
     public String getProductName() {
         return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
     }
 
     public String getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
     public int getProductQuantity() {
         return productQuantity;
     }
 
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
-    }
-
     public int getProductCapacity() {
         return productCapacity;
-    }
-
-    public void setProductCapacity(int productCapacity) {
-        this.productCapacity = productCapacity;
     }
 
     @Override

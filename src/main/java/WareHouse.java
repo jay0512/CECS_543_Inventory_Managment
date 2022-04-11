@@ -14,5 +14,4 @@ public class WareHouse {
         this.wareHouseAddress = wareHouseAddress;
     }
 
-
 }

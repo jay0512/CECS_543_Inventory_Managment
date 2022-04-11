@@ -1,9 +1,9 @@
 
 import exception.FoundNotException;
 import exception.InvalidInputException;
+import exception.LimitExceedException;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,10 +21,18 @@ public class ShopOwner extends User {
         this.password = password;
     }
 
-    public StockItem lookupInventoryItem(String productId) {
+    public StockItem lookupInventoryItem(String productId) throws FoundNotException, InvalidInputException {
+        if (productId.isEmpty() || productId.equals("")) {
+            throw new InvalidInputException("Input should not be empty");
+        }
+
         Map<String, StockItem> stockItems = getAllInventoryItems();
 
-        return stockItems.get(productId);
+        StockItem result = stockItems.get(productId);
+        if (result == null)
+            throw new FoundNotException("Stock Item not found");
+
+        return result;
 
     }
 
@@ -74,60 +82,54 @@ public class ShopOwner extends User {
     public Invoice generateInvoice(String invoiceId, String orderId, double amountPaid) {
         CustomerOrder order = CustomerOrder.getCustomerOrder(orderId);
 
-        Invoice invoice = new Invoice(invoiceId, LocalDateTime.now(), LocalDateTime.now(), order.getOrderId(), false, amountPaid, order.getTotalOrderAmount());
+        Invoice invoice = null;
+        try {
+            invoice = Invoice.generateInvoice(invoiceId, order, amountPaid);
+        } catch (LimitExceedException e) {
+            e.printStackTrace();
+        }
 
         return invoice;
     }
 
+    public Invoice payInvoiceInstallmentPayment(String invoiceId, double amountPaid) {
+        Invoice invoice = null;
+        try {
+            invoice = Invoice.getInvoiceById(invoiceId);
+        } catch (FoundNotException e) {
+            e.printStackTrace();
+        } catch (InvalidInputException e) {
+            e.printStackTrace();
+        }
+
+        Invoice updatedInvoice = null;
+        try {
+            updatedInvoice = Invoice.payInvoiceInstallmentPayment(invoice, amountPaid);
+        } catch (LimitExceedException e) {
+            e.printStackTrace();
+        }
+
+        return updatedInvoice;
+    }
+
     public Invoice updateInvoice(String invoiceId, Invoice updatedInvoice) {
-        Invoice invoice = Invoice.getInvoiceById(invoiceId);
-        invoice.setInvoiceId(updatedInvoice.getInvoiceId());
+        Invoice invoice = null;
+        try {
+            invoice = Invoice.getInvoiceById(invoiceId);
+        } catch (FoundNotException e) {
+            e.printStackTrace();
+        } catch (InvalidInputException e) {
+            e.printStackTrace();
+        }
         invoice.setInvoiceUpdateDate(updatedInvoice.getInvoiceUpdateDate());
         invoice.setAmountDue(updatedInvoice.getAmountDue());
         invoice.setInvoiceStatus(updatedInvoice.getInvoiceStatus());
 
-
         return invoice;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

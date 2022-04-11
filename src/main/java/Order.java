@@ -27,7 +27,4 @@ public abstract class Order {
         return totalOrderAmount;
     }
 
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
 }
